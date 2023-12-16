@@ -8,6 +8,29 @@ function insertPost($title,$writer,$type,$content){
 
     return $result? "True" : "False";
 }
+function deletePost($id) {
+    $db = dbConnect();
+    $qry = "DELETE FROM post WHERE `id` = $id";
+    $result = mysqli_query($db,$qry);
+    if($result) {
+        header("Location:showAllPost.php");
+    }else{
+        echo "<script>alert('Failed to Delete post')</script>";
+    }
+
+}
+
+function updatePost($title,$type,$writer,$content,$id){
+    $db = dbConnect();
+    $qry = "UPDATE `post` SET `title`='$title',`type`='$type',`writer`='$writer',`content`='$content' WHERE id='$id'";
+    $result = mysqli_query($db,$qry);
+    if($result){
+        header("Location:showAllPost.php");
+    }else{
+        echo "<script>alert('Update Failed')</script>";
+    }
+}
+
 function getAllPost($type){
     $db = dbConnect();
     $qry = "";
@@ -20,3 +43,9 @@ function getAllPost($type){
     return $result;
 }
 
+function getSinglePost($id){
+    $db = dbConnect();
+    $qry = "SELECT * FROM post WHERE id=$id";
+    $result = mysqli_query($db,$qry);
+    return $result;
+}

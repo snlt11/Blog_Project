@@ -9,15 +9,9 @@
  <!--Content-->
  <div class="container mt-4">
      <div class="row">
-         <div class="col-md-3">
-             <ul class="list-group">
-                 <li class="list-group-item"><a class="text-decoration-none" href="#">add Link</a></li>
-                 <li class="list-group-item"><a class="text-decoration-none" href="#">add Link</a></li>
-                 <li class="list-group-item"><a class="text-decoration-none" href="#">add Link</a></li>
-                 <li class="list-group-item"><a class="text-decoration-none" href="#">add Link</a></li>
-                 <li class="list-group-item"><a class="text-decoration-none" href="#">add Link</a></li>
-             </ul>
-         </div>
+         <?php
+            include_once ("Views/sidebar.php");
+         ?>
          <div class="col-md-9">
 
              <div class="row">

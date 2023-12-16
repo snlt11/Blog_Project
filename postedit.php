@@ -4,26 +4,23 @@ include_once("Views/navbar.php");
 include_once("Views/footer.php");
 include_once("sysgem/postgenerator.php");
 
-if(checkSession("username")){
-    if(getSession("username") != "administrator"){
-        header("Location: index.php");
+if(isset($_GET['id'])) {
+    $result = getSinglePost($_GET['id']);
+    $posts = [];
+    foreach ($result as $item) {
+        $posts["title"] = $item["title"];
+        $posts["type"] = $item["type"];
+        $posts["writer"] = $item["writer"];
+        $posts["content"] = $item["content"];
     }
-}else{
-    header("Location: index.php");
 }
-if(isset($_POST["submit"])){
-    $posttitle = $_POST["posttitle"];
-    $posttype = $_POST["posttype"];
-    $postwriter = $_POST["postwriter"];
-    $postcontent = $_POST["postcontent"];
-    $bol = insertPost($posttitle,$postwriter,$posttype,$postcontent);
+if(isset($_POST['submit'])) {
+    $posttitle = $_POST['posttitle'];
+    $posttype = $_POST['posttype'];
+    $postwriter = $_POST['postwriter'];
+    $postcontent = $_POST['postcontent'];
 
-    if($bol){
-        echo "<div class='alert alert-primary text-center' role='alert'><h3>Post Successfully Insert</h3></div>";
-    }else{
-        echo "<div class='alert alert-primary text-center' role='alert'><h3>Post Insert Fail</h3></div>";
-    }
-
+    updatePost($posttitle,$postwriter,$posttype,$postcontent,$_GET['id']);
 }
 
 ?>
@@ -32,14 +29,14 @@ if(isset($_POST["submit"])){
 <div class="container mt-4">
     <div class="row">
         <?php
-            include_once("Views/adminSidebar.php");
+        include_once("Views/adminSidebar.php");
         ?>
         <div class="col-md-9">
-            <form method="post" action="admin.php" enctype="multipart/form-data" class="mb-5 p-4" >
-                <h1 class="text-center">Post Form Insert</h1>
+            <form method="post" action="#" enctype="multipart/form-data" class="mb-5 p-4" >
+                <h1 class="text-center">Post Edit</h1>
                 <div class="form-group mb-3">
                     <label for="posttitle" class="form-label">Post Title</label>
-                    <input type="text" name="posttitle" class="form-control" id="posttitle">
+                    <input type="text" name="posttitle" class="form-control" id="posttitle" value="<?php echo $posts["title"] ?>">
                 </div>
                 <div class="form-group mb-3">
                     <label for="posttype" class="form-label">Post Type</label>
@@ -52,15 +49,15 @@ if(isset($_POST["submit"])){
                 </div>
                 <div class="form-group mb-3">
                     <label for="postwriter" class="form-label">Post Writer</label>
-                    <input type="text" name="postwriter" class="form-control" id="postwriter">
+                    <input type="text" name="postwriter" class="form-control" id="postwriter" value="<?php echo $posts["writer"] ?>">
                 </div>
                 <div class="form-group mb-3" >
                     <label for="postcontent" class="form-label">Content</label>
-                    <textarea class="form-control" name="postcontent" id="PostContent" rows="3"></textarea>
+                    <textarea class="form-control" name="postcontent" id="PostContent" rows="3">"<?php echo $posts["content"] ?>"</textarea>
                 </div>
                 <div class="form-group text-center">
-                    <button type="submit" name="submit" class="btn btn-primary">Post</button>
-                    <button type="button" class="btn btn-secondary">Cancle</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                    <a href="showAllPost.php" class="btn btn-secondary">Cancle</a>
                 </div>
             </form>
         </div>

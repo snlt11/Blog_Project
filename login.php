@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
             <input type="password" class="form-control" name="password" id="password">
         </div>
         <div class="text-center">
-        <button type="submit" name="submit" value="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="submit" value="submit" class="btn btn-primary">Login</button>
         </div>
     </form>
 

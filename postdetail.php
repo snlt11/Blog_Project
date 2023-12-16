@@ -5,20 +5,27 @@ include_once("Views/footer.php");
 include_once("sysgem/postgenerator.php");
 
 if(isset($_GET['id'])){
-    $id = $_GET['id'];
-    echo "<h1>$id</h1>";
+    $pid = getSinglePost($_GET['id']);
+
+
 }
-
-
 
 ?>
 
 
 <!--Content-->
-<div class="container mt-4">
-    <div class="row">
+<div class="container my-3">
+    <div class="card col-md-8 offset-md-2">
+        <?php
+            $result = getSinglePost($_GET['id']);
+            foreach($result as $data){
+                echo "<div class='card-header'><strong>".$data['title']."</strong><span class='float-end'>".$data['created_at']."</span></div>";
+                echo "<div class='card-body'>".$data['content']."</div>";
+                echo "<div class='card-footer'><strong>Written by : </strong>".$data['writer']."</div>";
+            }
 
 
+        ?>
     </div>
 </div>
 <!--End Content-->
