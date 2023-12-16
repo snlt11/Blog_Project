@@ -19,8 +19,9 @@ if(isset($_POST['submit'])) {
     $posttype = $_POST['posttype'];
     $postwriter = $_POST['postwriter'];
     $postcontent = $_POST['postcontent'];
+    $subject = $_POST['subject'];
 
-    updatePost($posttitle,$postwriter,$posttype,$postcontent,$_GET['id']);
+    updatePost($posttitle,$postwriter,$posttype,$postcontent,$_GET['id'],$subject);
 }
 
 ?>
@@ -40,11 +41,20 @@ if(isset($_POST['submit'])) {
                 </div>
                 <div class="form-group mb-3">
                     <label for="posttype" class="form-label">Post Type</label>
-                    <select class="form-select" id="posttype" name="posttype" aria-label="Default select example">
-                        <option selected>zero</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" id="posttype" name="posttype">
+                        <option value="1">Free Post</option>
+                        <option value="2">Paid Post</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="subject" class="form-label">Post Subject</label>
+                    <select class="form-select" id="subject" name="subject">
+                        <?php
+                        $subjects = getAllSubject();
+                        foreach($subjects as $subject){
+                            echo "<option value='".$subject["id"]."'>".$subject["name"]."</option>";
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="form-group mb-3">

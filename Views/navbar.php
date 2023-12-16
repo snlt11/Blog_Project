@@ -11,15 +11,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">New</a>
+                    <a class="nav-link active" aria-current="page" href="index.php">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Politic</a>
+                    <a class="nav-link" href="filterpost.php?id=1">Politic</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">It news</a>
-                </li><li class="nav-item">
-                    <a class="nav-link" href="#">War</a>
+                    <a class="nav-link" href="filterpost.php?id=2">It news</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="filterpost.php?id=3">Wars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="filterpost.php?id=4">Health</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
