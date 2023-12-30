@@ -1,5 +1,12 @@
 <?php
-
+//
+//                        if(checkSession("username") == "administrator" && checkSession("email") == "administrator@gmail.com"){
+//                            echo '<li><a class="btn btn-primary active" href="admin.php" role="button">Admin Dashboard</a></li>';
+//                        }else{
+//                            header('Location:index.php');
+//
+//                        }
+//
 ?>
 <!--Navbar Start-->
 <div class="container-fluid bg-primary">
@@ -45,6 +52,13 @@
                             }
                         ?>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <?php
+                    if(checkSession("username")){
+                        echo '<li><a class="btn btn-primary active" href="admin.php" role="button">Admin Dashboard</a></li>';
+                    }
+                    ?>
                 </li>
             </ul>
         </div>

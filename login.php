@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
     switch ($ret) {
         case "Login successful":
             $message = "Login successful";
-            if(getSession("email") == "administrator@gmail.com" && getSession("password") == "Administrator@123321"){
+            if($email == "administrator@gmail.com" && $password == "Administrator@123321"){
                 header("Location: admin.php");
             }else{
                 header("Location: index.php");

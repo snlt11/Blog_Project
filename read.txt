@@ -1,10 +1,7 @@
-
-
-
-
 administrator@gmail.com
 
 Administrator@123321
 
 administrator
 
+Run gemdata.php to generate data

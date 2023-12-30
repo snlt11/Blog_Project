@@ -21,7 +21,8 @@ if(isset($_POST["submit"])){
     $bol = insertPost($posttitle,$postwriter,$posttype,$postcontent,$subject);
 
     if($bol){
-        echo "<div class='alert alert-primary text-center' role='alert'><h3>Post Successfully Insert</h3></div>";
+        // echo "<div class='alert alert-primary text-center' role='alert'><h3>Post Successfully Insert</h3></div>";
+        header("Location: showAllPost.php");
     }else{
         echo "<div class='alert alert-primary text-center' role='alert'><h3>Post Insert Fail</h3></div>";
     }
@@ -71,7 +72,7 @@ if(isset($_POST["submit"])){
                 </div>
                 <div class="form-group text-center">
                     <button type="submit" name="submit" class="btn btn-primary">Post</button>
-                    <button type="button" class="btn btn-secondary">Cancle</button>
+                    <a href="index.php" class="btn btn-danger">Cancel</a>
                 </div>
             </form>
         </div>

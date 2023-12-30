@@ -49,9 +49,20 @@ function getAllPost($type){
     $db = dbConnect();
     $qry = "";
     if($type == 1){
-        $qry = "SELECT * FROM post WHERE type=$type" ;
+        $qry = "SELECT * FROM post WHERE type=$type ORDER BY created_at DESC" ;
     }else{
-        $qry = "SELECT * FROM post";
+        $qry = "SELECT * FROM post ORDER BY created_at DESC";
+    }
+    $result = mysqli_query($db,$qry);
+    return $result;
+}
+function getAllPostPagination($type,$start){
+    $db = dbConnect();
+    $qry = "";
+    if($type == 1){
+        $qry = "SELECT * FROM post WHERE type=$type LIMIT $start,20";
+    }else{
+        $qry = "SELECT * FROM post LIMIT $start,20";
     }
     $result = mysqli_query($db,$qry);
     return $result;
@@ -62,4 +73,11 @@ function getSinglePost($id){
     $qry = "SELECT * FROM post WHERE id=$id";
     $result = mysqli_query($db,$qry);
     return $result;
+}
+
+function getPostCount(){
+    $db = dbConnect();
+    $qry = "SELECT * FROM post";
+    $result = mysqli_query($db,$qry);
+    return mysqli_num_rows($result);
 }
