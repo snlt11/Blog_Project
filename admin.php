@@ -17,14 +17,11 @@ if(isset($_POST["submit"])){
     $postwriter = $_POST["postwriter"];
     $postcontent = $_POST["postcontent"];
     $subject = $_POST["subject"];
-
-    $bol = insertPost($posttitle,$postwriter,$posttype,$postcontent,$subject);
-
-    if($bol){
-        // echo "<div class='alert alert-primary text-center' role='alert'><h3>Post Successfully Insert</h3></div>";
-        header("Location: showAllPost.php");
+    if(empty($posttitle)){
+        header("location:admin.php");
     }else{
-        echo "<div class='alert alert-primary text-center' role='alert'><h3>Post Insert Fail</h3></div>";
+        $bol = insertPost($posttitle,$postwriter,$posttype,$postcontent,$subject);
+        header("Location: showAllPost.php");
     }
 
 }

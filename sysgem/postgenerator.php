@@ -5,8 +5,8 @@ function insertPost($title,$writer,$type,$content,$subject){
     $db = dbConnect();
     $qry = "INSERT INTO post(`title`,`type`,`subject`,`writer`,`content`,`created_at`)VALUES('$title','$type','$subject','$writer','$content','$created_at')";
     $result = mysqli_query($db,$qry);
-
     return $result? "True" : "False";
+
 }
 function deletePost($id) {
     $db = dbConnect();
